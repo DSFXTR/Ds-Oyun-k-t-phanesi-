@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doruk Seyrek | Official Game Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --gs-yellow: #f1c40f;
+            --gs-red: #e74c3c;
+            --bg-dark: #0a0a0a;
+            --card-bg: #151515;
+            --text-white: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 3px solid var(--gs-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--gs-yellow);
+        }
+
+        .yt-link {
+            background: #ff0000;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .yt-link:hover { transform: scale(1.1); box-shadow: 0 0 15px rgba(255,0,0,0.5); }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, #1a1a1a, var(--bg-dark));
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: clamp(30px, 5vw, 60px);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .hero span { color: var(--gs-red); }
+
+        /* GAME GRID */
+        .game-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 50px 5%;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #222;
+            transition: 0.4s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--gs-yellow);
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .card-img {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            background: linear-gradient(135deg, #1e1e1e, #333);
+        }
+
+        .card-content { padding: 20px; }
+        .card-title { font-size: 22px; font-weight: bold; margin-bottom: 5px; }
+        .card-tag { font-size: 12px; color: var(--gs-yellow); text-transform: uppercase; }
+
+        /* MODAL (OYUN PENCERESİ) */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            width: 90%;
+            max-width: 1000px;
+            height: 80vh;
+            background: #000;
+            border: 2px solid var(--gs-yellow);
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px; right: 0;
+            color: white; font-size: 30px; cursor: pointer;
+        }
+
+        iframe { width: 100%; height: 100%; border: none; border-radius: 13px; }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">DORUK SEYREK</div>
+        <a href="https://www.youtube.com/@DORUKUNRENKLIDUNYASI" target="_blank" class="yt-link">
+            <i class="fab fa-youtube"></i> ABONE OL
+        </a>
+    </header>
+
+    <section class="hero">
+        <h1>Oyun <span>Kütüphanesi</span></h1>
+        <p>Bütün projelerim tek bir noktada. Tıkla ve hemen oyna!</p>
+    </section>
+
+    <div class="game-container">
+        
+        <div class="card" onclick="openGame('KAFA TOPU', 'https://kafa-topu-linkin.html')">
+            <div class="card-img" style="color: #e74c3c;"><i class="fas fa-futbol"></i></div>
+            <div class="card-content">
+                <div class="card-tag">Spor</div>
+                <div class="card-title">Kafa Topu: Pro</div>
+            </div>
+        </div>
+
+        <div class="card" onclick="openGame('VALORANT', 'https://valorant-linkin.html')">
+            <div class="card-img" style="color: #3498db;"><i class="fas fa-crosshairs"></i></div>
+            <div class="card-content">
+                <div class="card-tag">Aksiyon</div>
+                <div class="card-title">Valorant Klon</div>
+            </div>
+        </div>
+
+        <div class="card" onclick="openGame('RAMAZAN', 'https://ramazan-sim-linkin.html')">
+            <div class="card-img" style="color: #f1c40f;"><i class="fas fa-moon"></i></div>
+            <div class="card-content">
+                <div class="card-tag">Simülasyon</div>
+                <div class="card-title">Ramazan Simulator</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeGame()">&times; Kapat</span>
+            <iframe id="gameFrame" src=""></iframe>
+        </div>
+    </div>
+
+    <script>
+        function openGame(title, url) {
+            // Eğer URL hala boşsa hata verme, uyarı ver
+            if(url.includes('linkin.html')) {
+                alert(title + " yakında eklenecek! Şu an yapım aşamasında.");
+                return;
+            }
+            document.getElementById('gameFrame').src = url;
+            document.getElementById('gameModal').style.display = 'flex';
+        }
+
+        function closeGame() {
+            document.getElementById('gameModal').style.display = 'none';
+            document.getElementById('gameFrame').src = '';
+        }
+    </script>
+
+</body>
+</html>
