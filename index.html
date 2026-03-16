@@ -211,3 +211,36 @@
 
 </body>
 </html>
+    <div class="game-container">
+        
+        <div class="card" onclick="openGame('KAFA TOPU', 'oyunlar/kafa-topu.html')">
+            <div class="card-img" style="color: #e74c3c;"><i class="fas fa-futbol"></i></div>
+            <div class="card-content">
+                <div class="card-tag">Spor</div>
+                <div class="card-title">Kafa Topu: Pro</div>
+            </div>
+        </div>
+
+        <div class="card" onclick="openGame('VALORANT', 'oyunlar/valorant.html')">
+
+    <script>
+        function openGame(title, url) {
+            // Oyun penceresini açar ve içine oyun linkini yükler
+            document.getElementById('gameFrame').src = url;
+            document.getElementById('gameModal').style.display = 'flex';
+        }
+
+        function closeGame() {
+            document.getElementById('gameModal').style.display = 'none';
+            document.getElementById('gameFrame').src = '';
+        }
+    </script>
+
+            <div class="card-img" style="color: #3498db;"><i class="fas fa-crosshairs"></i></div>
+            <div class="card-content">
+                <div class="card-tag">Aksiyon</div>
+                <div class="card-title">Valorant Klon</div>
+            </div>
+        </div>
+
+    </div>
