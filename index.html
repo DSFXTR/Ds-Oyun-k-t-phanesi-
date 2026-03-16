@@ -244,3 +244,29 @@
         </div>
 
     </div>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kafa Topu Pro - Doruk Seyrek</title>
+    <style>
+        body { background: #111; color: white; margin: 0; overflow: hidden; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        #game-container { position: relative; width: 600px; height: 300px; background: #2ecc71; border: 4px solid white; border-bottom: none; }
+        #player { position: absolute; bottom: 0; left: 50px; width: 40px; height: 50px; background: #e74c3c; border-radius: 10px 10px 0 0; transition: 0.1s; }
+        #ball { position: absolute; bottom: 20px; left: 290px; width: 20px; height: 20px; background: white; border-radius: 50%; }
+        .goal { position: absolute; bottom: 0; width: 10px; height: 80px; background: white; }
+        .goal-right { right: 0; }
+        h1 { color: #f1c40f; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>KAFA TOPU PRO</h1>
+    <div id="game-container">
+        <div id="player"></div>
+        <div id="ball"></div>
+        <div class="goal goal-left"></div>
+        <div class="goal goal-right"></div>
+    </div>
+    <p>Oyun dosyası başarıyla bağlandı! Proje geliştirilmeye hazır.</p>
+</body>
+</html>
