@@ -2,271 +2,136 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doruk Seyrek | Official Game Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>DSFX - Kafa Topu Pro Edition</title>
     <style>
-        :root {
-            --gs-yellow: #f1c40f;
-            --gs-red: #e74c3c;
-            --bg-dark: #0a0a0a;
-            --card-bg: #151515;
-            --text-white: #ffffff;
-        }
-
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-
-        /* NAVBAR */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 5%;
-            background: rgba(0, 0, 0, 0.9);
-            border-bottom: 3px solid var(--gs-red);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .logo {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: var(--gs-yellow);
-        }
-
-        .yt-link {
-            background: #ff0000;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-        }
-
-        .yt-link:hover { transform: scale(1.1); box-shadow: 0 0 15px rgba(255,0,0,0.5); }
-
-        /* HERO SECTION */
-        .hero {
-            text-align: center;
-            padding: 100px 20px;
-            background: linear-gradient(to bottom, #1a1a1a, var(--bg-dark));
-        }
-
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(30px, 5vw, 60px);
-            margin: 0;
-            text-transform: uppercase;
-        }
-
-        .hero span { color: var(--gs-red); }
-
-        /* GAME GRID */
-        .game-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-            padding: 50px 5%;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid #222;
-            transition: 0.4s;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .card:hover {
-            border-color: var(--gs-yellow);
-            transform: translateY(-10px) scale(1.02);
-        }
-
-        .card-img {
-            height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 70px;
-            background: linear-gradient(135deg, #1e1e1e, #333);
-        }
-
-        .card-content { padding: 20px; }
-        .card-title { font-size: 22px; font-weight: bold; margin-bottom: 5px; }
-        .card-tag { font-size: 12px; color: var(--gs-yellow); text-transform: uppercase; }
-
-        /* MODAL (OYUN PENCERESİ) */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            width: 90%;
-            max-width: 1000px;
-            height: 80vh;
-            background: #000;
-            border: 2px solid var(--gs-yellow);
-            border-radius: 15px;
-            position: relative;
-        }
-
-        .close-modal {
-            position: absolute;
-            top: -40px; right: 0;
-            color: white; font-size: 30px; cursor: pointer;
-        }
-
-        iframe { width: 100%; height: 100%; border: none; border-radius: 13px; }
-
+        body { background: #1a1a1a; display: flex; flex-direction: column; align-items: center; color: white; font-family: sans-serif; }
+        canvas { background: linear-gradient(#4facfe 0%, #00f2fe 100%); border: 5px solid #fff; border-radius: 10px; margin-top: 20px; }
+        .controls { margin-top: 10px; font-size: 18px; color: #ebd08c; }
+        h1 { color: #ebd08c; margin-bottom: 5px; }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="logo">DORUK SEYREK</div>
-        <a href="https://www.youtube.com/@DORUKUNRENKLIDUNYASI" target="_blank" class="yt-link">
-            <i class="fab fa-youtube"></i> ABONE OL
-        </a>
-    </header>
-
-    <section class="hero">
-        <h1>Oyun <span>Kütüphanesi</span></h1>
-        <p>Bütün projelerim tek bir noktada. Tıkla ve hemen oyna!</p>
-    </section>
-
-    <div class="game-container">
-        
-        <div class="card" onclick="openGame('KAFA TOPU', 'https://kafa-topu-linkin.html')">
-            <div class="card-img" style="color: #e74c3c;"><i class="fas fa-futbol"></i></div>
-            <div class="card-content">
-                <div class="card-tag">Spor</div>
-                <div class="card-title">Kafa Topu: Pro</div>
-            </div>
-        </div>
-
-        <div class="card" onclick="openGame('VALORANT', 'https://valorant-linkin.html')">
-            <div class="card-img" style="color: #3498db;"><i class="fas fa-crosshairs"></i></div>
-            <div class="card-content">
-                <div class="card-tag">Aksiyon</div>
-                <div class="card-title">Valorant Klon</div>
-            </div>
-        </div>
-
-        <div class="card" onclick="openGame('RAMAZAN', 'https://ramazan-sim-linkin.html')">
-            <div class="card-img" style="color: #f1c40f;"><i class="fas fa-moon"></i></div>
-            <div class="card-content">
-                <div class="card-tag">Simülasyon</div>
-                <div class="card-title">Ramazan Simulator</div>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="gameModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeGame()">&times; Kapat</span>
-            <iframe id="gameFrame" src=""></iframe>
-        </div>
-    </div>
+    <h1>DSFX KAFA TOPU</h1>
+    <div class="controls">PC: A/D Hareket | W Zıpla</div>
+    <canvas id="gameCanvas" width="800" height="400"></canvas>
 
     <script>
-        function openGame(title, url) {
-            // Eğer URL hala boşsa hata verme, uyarı ver
-            if(url.includes('linkin.html')) {
-                alert(title + " yakında eklenecek! Şu an yapım aşamasında.");
-                return;
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+
+        // Oyun Değişkenleri
+        let score = 0;
+        const gravity = 0.5;
+
+        // Oyuncu Objesi
+        const player = {
+            x: 100, y: 300, width: 50, height: 70,
+            dx: 0, dy: 0, speed: 5, jumpPower: -12, grounded: false
+        };
+
+        // Top Objesi
+        const ball = {
+            x: 400, y: 200, radius: 15,
+            dx: 3, dy: 0, bounce: 0.7
+        };
+
+        // Tuş Kontrolleri
+        const keys = {};
+        window.addEventListener("keydown", e => keys[e.code] = true);
+        window.addEventListener("keyup", e => keys[e.code] = false);
+
+        function update() {
+            // Hareket Kontrolü
+            if (keys["KeyA"]) player.dx = -player.speed;
+            else if (keys["KeyD"]) player.dx = player.speed;
+            else player.dx = 0;
+
+            if (keys["KeyW"] && player.grounded) {
+                player.dy = player.jumpPower;
+                player.grounded = false;
             }
-            document.getElementById('gameFrame').src = url;
-            document.getElementById('gameModal').style.display = 'flex';
+
+            // Fizik Uygulama
+            player.dy += gravity;
+            player.x += player.dx;
+            player.y += player.dy;
+
+            ball.dy += gravity;
+            ball.x += ball.dx;
+            ball.y += ball.dy;
+
+            // Zemin Çarpışması
+            if (player.y + player.height > canvas.height - 20) {
+                player.y = canvas.height - 20 - player.height;
+                player.dy = 0;
+                player.grounded = true;
+            }
+
+            if (ball.y + ball.radius > canvas.height - 20) {
+                ball.y = canvas.height - 20 - ball.radius;
+                ball.dy *= -ball.bounce;
+            }
+
+            // Duvar ve Kale Çarpışması
+            if (ball.x + ball.radius > canvas.width || ball.x - ball.radius < 0) {
+                if (ball.y > 250) { // Gol Bölgesi
+                    score++;
+                    resetBall();
+                } else {
+                    ball.dx *= -1;
+                }
+            }
+
+            // Oyuncu ve Top Çarpışması
+            let dist = Math.hypot(ball.x - (player.x + player.width/2), ball.y - (player.y + player.height/2));
+            if (dist < 50) {
+                ball.dx = (ball.x - (player.x + player.width/2)) * 0.2;
+                ball.dy = -10;
+            }
+
+            draw();
+            requestAnimationFrame(update);
         }
 
-        function closeGame() {
-            document.getElementById('gameModal').style.display = 'none';
-            document.getElementById('gameFrame').src = '';
+        function resetBall() {
+            ball.x = 400; ball.y = 100; ball.dx = 3; ball.dy = 0;
         }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Çim
+            ctx.fillStyle = "#2ecc71";
+            ctx.fillRect(0, canvas.height - 20, canvas.width, 20);
+
+            // Kale (Sağ taraf)
+            ctx.strokeStyle = "white";
+            ctx.lineWidth = 5;
+            ctx.strokeRect(canvas.width - 40, 250, 40, 130);
+
+            // Oyuncu (Kafa Şeklinde)
+            ctx.fillStyle = "#e67e22";
+            ctx.beginPath();
+            ctx.arc(player.x + 25, player.y + 25, 25, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.fillStyle = "blue";
+            ctx.fillRect(player.x + 10, player.y + 50, 30, 20); // Vücut
+
+            // Top
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = "black";
+            ctx.stroke();
+
+            // Skor
+            ctx.fillStyle = "white";
+            ctx.font = "30px Arial";
+            ctx.fillText("Gol: " + score, 20, 40);
+        }
+
+        update();
     </script>
-
-</body>
-</html>
-    <div class="game-container">
-        
-        <div class="card" onclick="openGame('KAFA TOPU', 'oyunlar/kafa-topu.html')">
-            <div class="card-img" style="color: #e74c3c;"><i class="fas fa-futbol"></i></div>
-            <div class="card-content">
-                <div class="card-tag">Spor</div>
-                <div class="card-title">Kafa Topu: Pro</div>
-            </div>
-        </div>
-
-        <div class="card" onclick="openGame('VALORANT', 'oyunlar/valorant.html')">
-
-    <script>
-        function openGame(title, url) {
-            // Oyun penceresini açar ve içine oyun linkini yükler
-            document.getElementById('gameFrame').src = url;
-            document.getElementById('gameModal').style.display = 'flex';
-        }
-
-        function closeGame() {
-            document.getElementById('gameModal').style.display = 'none';
-            document.getElementById('gameFrame').src = '';
-        }
-    </script>
-
-            <div class="card-img" style="color: #3498db;"><i class="fas fa-crosshairs"></i></div>
-            <div class="card-content">
-                <div class="card-tag">Aksiyon</div>
-                <div class="card-title">Valorant Klon</div>
-            </div>
-        </div>
-
-    </div>
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <title>Kafa Topu Pro - Doruk Seyrek</title>
-    <style>
-        body { background: #111; color: white; margin: 0; overflow: hidden; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        #game-container { position: relative; width: 600px; height: 300px; background: #2ecc71; border: 4px solid white; border-bottom: none; }
-        #player { position: absolute; bottom: 0; left: 50px; width: 40px; height: 50px; background: #e74c3c; border-radius: 10px 10px 0 0; transition: 0.1s; }
-        #ball { position: absolute; bottom: 20px; left: 290px; width: 20px; height: 20px; background: white; border-radius: 50%; }
-        .goal { position: absolute; bottom: 0; width: 10px; height: 80px; background: white; }
-        .goal-right { right: 0; }
-        h1 { color: #f1c40f; margin-bottom: 10px; }
-    </style>
-</head>
-<body>
-    <h1>KAFA TOPU PRO</h1>
-    <div id="game-container">
-        <div id="player"></div>
-        <div id="ball"></div>
-        <div class="goal goal-left"></div>
-        <div class="goal goal-right"></div>
-    </div>
-    <p>Oyun dosyası başarıyla bağlandı! Proje geliştirilmeye hazır.</p>
 </body>
 </html>
